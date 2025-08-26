@@ -1,22 +1,193 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+---
+import "../styles/global.css";
+import Nav from "../components/nav.astro";
+import Footer from "../components/footer.astro";
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+export interface Props {
+  title?: string;
+  description?: string;
+  keywords?: string;
+  image?: string;
+  imageAlt?: string;
+  url?: string;
+  type?: string;
+  author?: string;
+  publishedTime?: string;
+  modifiedTime?: string;
+  siteName?: string;
+  locale?: string;
+  twitterHandle?: string;
+  instagramHandle?: string;
+  noindex?: boolean;
+  canonicalUrl?: string;
+}
+
+// Get current URL
+const currentUrl = Astro.url.href;
+const currentPath = Astro.url.pathname;
+
+// Default SEO values - customize these for your business
+const {
+  title = "Highland Momo - Authentic Tibetan Momos & Himalayan Cuisine | Toronto",
+  description = "At Highland Momo, we take immense pride in serving you more than just a meal – we serve a piece of our heritage. With every momo, we bring you the authentic taste of a centuries-old tradition, passed down through generations in the heart of the Himalayas. ",
+  keywords = "Highland Momo, Tibetan food, momos, Himalayan cuisine, Toronto restaurant, authentic Tibetan, Chinese food, traditional food, handmade momos, Tibetan restaurant, ethnic food Toronto",
+  image = "/highLandMomo.svg",
+  imageAlt = "Highland Momo - Delicious authentic Tibetan momos and Himalayan cuisine",
+  url = currentUrl,
+  type = "website",
+  author = "Highland Momo Restaurant",
+  siteName = "Highland Momo",
+  locale = "en_CA",
+  instagramHandle = "high_land_momo",
+  noindex = false,
+  canonicalUrl = currentUrl,
+} = Astro.props;
+
+// Structured data for local business
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  name: "Highland Momo",
+  description: description,
+  url: "https://highlandmomo.ca",
+  logo: "https://highlandmomo.ca/logo.svg",
+  image: [
+    "https://highlandmomo.ca/assets/pan_fried_momo.webp",
+    "https://highlandmomo.ca/assets/spring_rolls.webp",
+  ],
+  telephone: "+1-416-394-1020",
+  email: "info@highlandmomo.ca",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "2267 Islington Ave",
+    addressLocality: "Toronto",
+    addressRegion: "ON",
+    postalCode: "M9W 3W7",
+    addressCountry: "CA",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 43.7186748,
+    longitude: -79.5593421,
+  },
+  openingHours: [
+    "Mo-Su 11:00-22:00", // Update with your actual hours
+  ],
+  servesCuisine: ["Tibetan", "Himalayan", "Asian"],
+  priceRange: "$$",
+  acceptsReservations: true,
+  hasMenu: "https://highlandmomo.ca#menu",
+  paymentAccepted: ["Cash", "Credit Card", "Debit Card"],
+  currenciesAccepted: "CAD",
+};
+---
+
+<!doctype html>
+<html lang="en-CA">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Basic SEO -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <meta name="author" content={author} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    {
+      !noindex && (
+        <meta
+          name="robots"
+          content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+        />
+      )
+    }
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Open Graph (Facebook, LinkedIn, etc.) -->
+    <meta property="og:type" content={type} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:image:alt" content={imageAlt} />
+    <meta property="og:url" content={url} />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:locale" content={locale} />
+
+    <!-- Additional Meta Tags -->
+    <meta name="format-detection" content="telephone=yes" />
+    <meta name="geo.region" content="CA-ON" />
+    <meta name="geo.placename" content="Toronto" />
+    <meta name="geo.position" content="43.6532;-79.3832" />
+    <!-- Update coordinates -->
+    <meta name="ICBM" content="43.6532, -79.3832" />
+
+    <!-- Favicon and Icons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#16a34a" />
+    <!-- Green theme matching your brand -->
+
+    <!-- Preconnect to external domains for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Generator -->
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Structured Data -->
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(structuredData)}
+    />
+
+    <!-- Additional structured data for breadcrumbs if on sub-pages -->
+    {
+      currentPath !== "/" && (
+        <script
+          type="application/ld+json"
+          set:html={JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: "https://highlandmomo.ca",
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: title.split(" - ")[0],
+                item: url,
+              },
+            ],
+          })}
+        />
+      )
+    }
+  </head>
+  <body>
+    <!-- Skip to main content for accessibility -->
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-green-600 text-white px-4 py-2 rounded z-50"
+    >
+      Skip to main content
+    </a>
+
+    <div class="flex flex-col md:w-10/12 mx-auto min-h-screen">
+      <Nav />
+      <main id="main-content" role="main">
+        <slot />
+      </main>
+      <Footer />
+    </div>
+  </body>
+</html>

@@ -1,0 +1,248 @@
+---
+// About page data configuration
+const aboutData = {
+  ourStory: {
+    title: "Our Story",
+    sections: [
+      {
+        subtitle: "",
+        content:
+          "At Highland Momo, we take immense pride in serving you more than just a meal – we serve a piece of our heritage. With every momo, we bring you the authentic taste of a centuries-old tradition, passed down through generations in the heart of the Himalayas.",
+      },
+      {
+        subtitle: "What is Momo?",
+        content:
+          "Momo, a beloved staple of Tibetan and Himalayan cuisine, is a savoury dumpling filled with a variety of fillings such as juicy meats, fresh vegetables, or aromatic herbs. Each momo is carefully hand-made with skill and passion and steamed to perfection for that delicate balance of softness and flavor. Often paired with spicy dipping sauces, momo is a culinary delight that captures the essence of Tibetan culture – a simple yet profoundly satisfying dish enjoyed by families, friends, and communities alike.",
+      },
+      {
+        subtitle: "Our Promise to You",
+        content:
+          "At Highland Momo, our mission is simple: to bring the real, authentic taste of Tibetan momo to your town while staying true to the traditional methods that make this dish so special. From the selection of ingredients to the careful preparation and cooking process, we ensure every momo is made with the highest quality and utmost care. We believe in not only serving delicious food but also in providing nutrition and affordability for everyone. That's why we offer a variety of options – from our classic Combo meals to the more budget-friendly Single servings and Student discounts – ensuring you get the taste of Himalayan tradition at a price that fits your lifestyle.",
+      },
+      {
+        subtitle: "A Tradition of Love and Care",
+        content:
+          "Momo-making is not just a craft; it's a family tradition. For generations, this beloved dish has been passed down, and we are proud to bring that same love, care, and attention to detail to every momo we serve. The culture of momo-making is deeply embedded in Tibetan life, symbolizing unity, warmth, and hospitality. We carry this tradition forward with each order, ensuring that you not only experience the authentic flavors but also the warmth of Tibetan hospitality.",
+      },
+    ],
+    whyChoose: {
+      title: "Why Choose Highland Momo?",
+      points: [
+        {
+          title: "Authenticity",
+          description:
+            "Our recipes and techniques are deeply rooted in Tibetan culture, ensuring that you taste the genuine flavours of the Himalayas in every bite.",
+        },
+        {
+          title: "Quality Ingredients",
+          description:
+            "We source the freshest, most flavourful ingredients to create momo that is as nutritious as it is delicious.",
+        },
+        {
+          title: "Affordability",
+          description:
+            "We believe in bringing the joy of authentic Tibetan momo to everyone. With our various meal options, there's something for every budget.",
+        },
+        {
+          title: "Love and Care",
+          description:
+            "Every momo is handmade with care, and we strive to provide you with an exceptional experience every time you visit.",
+        },
+      ],
+    },
+    closing:
+      "We are excited to bring the warmth of the Himalayas to your town, and we would be honoured to have you as our valued customer. Come taste the love and tradition in every bite of momo – your new favourite comfort food is just a visit away.",
+  },
+  contact: {
+    title: "Contact Us",
+    phone: "(416) 394-1020",
+    email: "info@highlandmomo.com",
+    address: "2267 Islington Ave, Etobicoke, ON M9W 3W7",
+    hours: [
+      { day: "Monday - Friday", time: "11:00 AM - 9:00 PM" },
+      { day: "Saturday - Sunday", time: "10:00 AM - 10:00 PM" },
+    ],
+  },
+  location: {
+    title: "Find Us",
+    mapEmbedUrl:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2886.2!2d-79.3832!3d43.6532!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDPCsDM5JzExLjUiTiA3OcKwMjInNTkuNSJX!5e0!3m2!1sen!2sca!4v1234567890123!5m2!1sen!2sca",
+  },
+};
+---
+
+<main class="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-4xl mx-auto">
+    <!-- Our Story Section -->
+    <section class="mb-16">
+      <h1 class="text-4xl font-bold text-black mb-8 text-center">
+        {aboutData.ourStory.title}
+      </h1>
+
+      <!-- Story Sections -->
+      <div class="space-y-8">
+        {
+          aboutData.ourStory.sections.map((section) => (
+            <div>
+              {section.subtitle && (
+                <h2 class="text-2xl font-semibold text-green-600 mb-4">
+                  {section.subtitle}
+                </h2>
+              )}
+              <p class="text-lg text-gray-700 leading-relaxed">
+                {section.content}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+
+      <!-- Why Choose Highland Momo -->
+      <div class="mt-12">
+        <h2 class="text-2xl font-semibold text-green-600 mb-6">
+          {aboutData.ourStory.whyChoose.title}
+        </h2>
+        <div class="grid md:grid-cols-2 gap-6">
+          {
+            aboutData.ourStory.whyChoose.points.map((point) => (
+              <div class="border-l-4 border-green-600 pl-4">
+                <h3 class="font-semibold text-black mb-2">{point.title}</h3>
+                <p class="text-gray-700">{point.description}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <!-- Closing Statement -->
+      <div class="mt-10 p-6 bg-gray-50 rounded-lg">
+        <h2 class="text-2xl font-semibold text-green-600 mb-4 text-center">
+          Join Us at Highland Momo
+        </h2>
+        <p class="text-lg text-gray-700 leading-relaxed text-center">
+          {aboutData.ourStory.closing}
+        </p>
+      </div>
+    </section>
+
+    <!-- Contact and Location Grid -->
+    <div class="grid md:grid-cols-2 gap-12 mb-16">
+      <!-- Contact Section -->
+      <section>
+        <h2 class="text-3xl font-bold text-black mb-6">
+          {aboutData.contact.title}
+        </h2>
+
+        <div class="space-y-4">
+          <!-- Phone -->
+          <div class="flex items-center">
+            <svg
+              class="w-5 h-5 text-green-600 mr-3 flex-shrink-0"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"
+              ></path>
+            </svg>
+            <a
+              href={`tel:${aboutData.contact.phone}`}
+              class="text-gray-800 hover:text-green-600 transition-colors"
+            >
+              {aboutData.contact.phone}
+            </a>
+          </div>
+
+          <!-- Email -->
+          <div class="flex items-center">
+            <svg
+              class="w-5 h-5 text-green-600 mr-3 flex-shrink-0"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"
+              ></path>
+              <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"
+              ></path>
+            </svg>
+            <a
+              href={`mailto:${aboutData.contact.email}`}
+              class="text-gray-800 hover:text-green-600 transition-colors"
+            >
+              {aboutData.contact.email}
+            </a>
+          </div>
+
+          <!-- Address -->
+          <div class="flex items-start">
+            <svg
+              class="w-5 h-5 text-green-600 mr-3 flex-shrink-0 mt-1"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                clip-rule="evenodd"></path>
+            </svg>
+            <span class="text-gray-800">
+              {aboutData.contact.address}
+            </span>
+          </div>
+
+          <!-- Hours -->
+          <div class="pt-4">
+            <h3 class="font-semibold text-black mb-2 flex items-center">
+              <svg
+                class="w-5 h-5 text-green-600 mr-3"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+                  clip-rule="evenodd"></path>
+              </svg>
+              Hours
+            </h3>
+            <div class="ml-8 space-y-1">
+              {
+                aboutData.contact.hours.map((schedule) => (
+                  <div class="flex justify-between">
+                    <span class="text-gray-800">{schedule.day}:</span>
+                    <span class="text-gray-700">{schedule.time}</span>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Location Section -->
+      <section>
+        <h2 class="text-3xl font-bold text-black mb-6">
+          {aboutData.location.title}
+        </h2>
+
+        <!-- Google Maps Iframe -->
+        <div class="w-full h-80 bg-gray-100 rounded-lg overflow-hidden">
+          <iframe
+            src={aboutData.location.mapEmbedUrl}
+            width="100%"
+            height="100%"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Highland Momo Location"></iframe>
+        </div>
+
+        <p class="text-sm text-gray-600 mt-2">
+          Click on the map to get directions
+        </p>
+      </section>
+    </div>
+  </div>
+</main>

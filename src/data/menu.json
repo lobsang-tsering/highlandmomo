@@ -1,0 +1,61 @@
+[
+  {
+    "category": "A_Vegetable_Momos_Tsal_MOMO",
+    "display_name": "Vegetable Momos Tsal MOMO",
+    "items": [
+      { "item_no": "1V", "item_name": "Chive Momo", "price": 9.95 },
+      { "item_no": "2V", "item_name": "Spinach Momo", "price": 9.95 },
+      { "item_no": "3V", "item_name": "Chive and Potato Momo", "price": 9.95 }
+    ]
+  },
+  {
+    "category": "B_Non_Veg_Momos_Sha_MOMO",
+    "display_name": "Non Veg Momos Sha MOMO",
+    "items": [
+      { "item_no": "1NV", "item_name": "Beef Momo / Langsha Momo", "price": 10.95 },
+      { "item_no": "2NV", "item_name": "Pork Momo / Phaksha Momo", "price": 10.95 },
+      { "item_no": "3NV", "item_name": "Chicken Momo / Jasha Momo", "price": 10.95 }
+    ]
+  },
+  {
+    "category": "C_Salad_Sauce",
+    "display_name": "Salad Sauce",
+    "items": [
+      { "item_no": "1S", "item_name": "Mango Salad", "price": 6.95 },
+      { "item_no": "2S", "item_name": "Roll Salad", "price": 6.95 },
+      { "item_no": "3S", "item_name": "Green Salad", "price": 4.95 },
+      { "item_no": "4SS", "item_name": "Red Chilly Sauce / King Sauce", "price": 0.99 },
+      { "item_no": "5SS", "item_name": "Tomato Sauce / Queen Sauce", "price": 0.99 },
+      { "item_no": "6SS", "item_name": "Mild Sauce", "price": 0.99 }
+    ]
+  },
+  {
+    "category": "D_Highland_Momo_Teas",
+    "display_name": "Highland Momo Teas",
+    "items": [
+      { "item_no": "1HMT", "item_name": "Highland Milk Tea", "price": 4.95 },
+      { "item_no": "2TMT", "item_name": "Taro Milk Tea", "price": 5.95 },
+      { "item_no": "3MMT", "item_name": "Mango Milk Tea", "price": 5.95 },
+      { "item_no": "4SM", "item_name": "Strawberry Milk Tea", "price": 5.95 },
+      { "item_no": "5MT", "item_name": "Macha Tea", "price": 5.95 },
+      { "item_no": "6IC", "item_name": "Ice Coffee", "price": 5.95 },
+      { "item_no": "7CMT", "item_name": "Coconut Milk Tea", "price": 5.95 },
+      { "item_no": "8HBT", "item_name": "Highland Bubble Tea", "price": 5.95 }
+    ]
+  },
+  {
+    "category": "E_All_Pops",
+    "display_name": "All Pops",
+    "items": [
+      { "item_no": "1P", "item_name": "Ginger Ale, Coca, Sprite, Diet Coke, Coke Zero, C-Plus", "price": 1.99 },
+      { "item_no": "2W", "item_name": "Water", "price": 1.0 }
+    ]
+  },
+  {
+    "category": "F_Highland_Special_Combo",
+    "display_name": "Highland Special Combo",
+    "items": [
+      { "item_no": "1HSC", "item_name": "Your Choice of MOMO + Pop + Salad + Sauce", "price": 13.99 }
+    ]
+  }
+]

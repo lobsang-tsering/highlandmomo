@@ -1,0 +1,106 @@
+---
+import menuData from "../data/menu.json";
+---
+
+<div
+  class="accordion md:w-10/12 mx-auto mt-8 bg-white rounded-sm shadow-sm overflow-hidden my-14"
+>
+  {
+    menuData.map((category, index) => (
+      <div
+        class="accordion-item border-b border-gray-200 last:border-b-0"
+        id={`accordion-${index}`}
+      >
+        <button
+          class="accordion-toggle w-full flex justify-between items-center px-6 py-5 text-left text-xl font-semibold text-gray-800 hover:bg-gray-50 transition-colors duration-200 focus:outline-none focus:bg-gray-50"
+          aria-controls={`accordion-content-${index}`}
+          aria-expanded={index === 0 ? "true" : "false"}
+          data-index={index}
+        >
+          <span class="flex-1">{category.display_name}</span>
+          <div class="flex-shrink-0 ml-4">
+            <span
+              class={`plus-icon text-gray-600 size-6 ${index === 0 ? "hidden" : ""}`}
+            >
+              +
+            </span>
+            <span
+              class={`minus-icon text-gray-600 size-6 ${index === 0 ? "" : "hidden"}`}
+            >
+              −
+            </span>
+          </div>
+        </button>
+        <div
+          id={`accordion-content-${index}`}
+          class={`accordion-content w-full overflow-hidden transition-all duration-300 ease-in-out ${index === 0 ? "" : "hidden"}`}
+          aria-labelledby={`accordion-${index}`}
+          role="region"
+        >
+          <div class="px-6 py-4 bg-gray-50">
+            <ul class="space-y-3">
+              {category.items.map((item) => (
+                <li class="flex justify-between items-center py-2 px-4 rounded-lg">
+                  <span class="text-gray-800 font-medium flex-1 pr-4">
+                    {item.item_name}
+                  </span>
+                  <span class="font-bold text-green-600 text-lg">
+                    ${item.price.toFixed(2)}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    ))
+  }
+</div>
+
+<script>
+  function toggleAccordion(index: number) {
+    const item = document.getElementById(`accordion-${index}`);
+    const content = document.getElementById(`accordion-content-${index}`);
+    const isOpen = content ? !content.classList.contains("hidden") : false;
+
+    // Close all others
+    document
+      .querySelectorAll(".accordion-content")
+      .forEach((el) => el.classList.add("hidden"));
+    document.querySelectorAll(".accordion-toggle").forEach((el) => {
+      el.setAttribute("aria-expanded", "false");
+      // Reset all icons to plus
+      const plusIcon = el.querySelector(".plus-icon");
+      const minusIcon = el.querySelector(".minus-icon");
+      if (plusIcon && minusIcon) {
+        plusIcon.classList.remove("hidden");
+        minusIcon.classList.add("hidden");
+      }
+    });
+
+    if (!isOpen && content && item) {
+      content.classList.remove("hidden");
+      const toggleButton = item.querySelector(".accordion-toggle");
+      if (toggleButton) {
+        toggleButton.setAttribute("aria-expanded", "true");
+        // Switch to minus icon for opened accordion
+        const plusIcon = toggleButton.querySelector(".plus-icon");
+        const minusIcon = toggleButton.querySelector(".minus-icon");
+        if (plusIcon && minusIcon) {
+          plusIcon.classList.add("hidden");
+          minusIcon.classList.remove("hidden");
+        }
+      }
+    }
+  }
+
+  // Make function globally accessible
+  (window as any).toggleAccordion = toggleAccordion;
+
+  // Alternative: Event delegation approach
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".accordion-toggle").forEach((button, index) => {
+      button.addEventListener("click", () => toggleAccordion(index));
+    });
+  });
+</script>

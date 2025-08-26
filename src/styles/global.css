@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+
+@layer utilities {
+
+  /* Fixed Slide-in utility classes */
+  .slide-in {
+    position: relative;
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform, opacity;
+  }
+
+  /* Active state when element is visible */
+  .slide-in.active {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* Alternative slide directions */
+  .slide-in-right {
+    position: relative;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform, opacity;
+  }
+
+  .slide-in-right.active {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .slide-in-up {
+    position: relative;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform, opacity;
+  }
+
+  .slide-in-up.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+
+  /* Add more nth-child rules as needed for additional elements */
+
+  /* Mobile-specific adjustments - maintain directional differences */
+  @media (max-width: 640px) {
+    .slide-in {
+      transform: translateX(-30px); /* Reduced left slide for mobile */
+    }
+    
+    .slide-in-right {
+      transform: translateX(30px); /* Reduced right slide for mobile */
+    }
+    
+    .slide-in.active,
+    .slide-in-right.active,
+    .slide-in-up.active {
+      transform: translateX(0) translateY(0);
+    }
+  }
+
+  /* Medium screen specific fixes */
+  @media (min-width: 641px) and (max-width: 1024px) {
+    .slide-in {
+      transform: translateX(-50px); /* Reduced movement for medium screens */
+    }
+    
+    .slide-in-right {
+      transform: translateX(50px);
+    }
+    
+    .slide-in.active,
+    .slide-in-right.active,
+    .slide-in-up.active {
+      transform: translateX(0) translateY(0);
+    }
+  }
+
+  /* Large screen enhancements */
+  @media (min-width: 1025px) {
+    .slide-in {
+      transform: translateX(-120px); /* Enhanced movement for large screens */
+    }
+    
+    .slide-in-right {
+      transform: translateX(120px);
+    }
+    
+    .slide-in-up {
+      transform: translateY(80px); /* More dramatic upward movement */
+    }
+    
+    /* Enhanced active states for large screens */
+    .slide-in.active,
+    .slide-in-right.active,
+    .slide-in-up.active {
+      transform: translateX(0) translateY(0);
+    }
+  }
+}
