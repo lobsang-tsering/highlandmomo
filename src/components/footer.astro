@@ -40,7 +40,7 @@ const footerData = {
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="p-4 bg-white sm:p-6 dark:bg-gray-800">
+<footer class="p-4 bg-white sm:p-6">
   <div class="mx-auto max-w-screen-xl">
     <div class="md:flex md:justify-between">
       <!-- Company Logo and Name -->
@@ -51,9 +51,7 @@ const currentYear = new Date().getFullYear();
             class="mr-3 h-8"
             alt={footerData.company.logoAlt}
           />
-          <span
-            class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
-          >
+          <span class="self-center text-2xl font-semibold whitespace-nowrap">
             {footerData.company.name}
           </span>
         </a>
@@ -64,10 +62,10 @@ const currentYear = new Date().getFullYear();
         {
           footerData.sections.map((section) => (
             <div>
-              <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+              <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase ">
                 {section.title}
               </h2>
-              <ul class="text-gray-600 dark:text-gray-400">
+              <ul class="text-gray-600 ">
                 {section.links.map((link, index) => (
                   <li class={index === section.links.length - 1 ? "" : "mb-4"}>
                     <a href={link.href} class="hover:underline">
@@ -83,11 +81,11 @@ const currentYear = new Date().getFullYear();
     </div>
 
     <!-- Divider -->
-    <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+    <hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" />
 
     <!-- Copyright and Social Links -->
     <div class="sm:flex sm:items-center sm:justify-between">
-      <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">
+      <span class="text-sm text-gray-500 sm:text-center">
         © {currentYear}
         <a href="/" class="hover:underline ml-1">
           {footerData.company.name}™
@@ -100,7 +98,7 @@ const currentYear = new Date().getFullYear();
           footerData.socialLinks.map((social) => (
             <a
               href={social.href}
-              class="text-gray-500 hover:text-green-600 dark:hover:text-white"
+              class="text-gray-500 hover:text-green-600 "
               aria-label={`Follow us on ${social.name}`}
             >
               <svg
